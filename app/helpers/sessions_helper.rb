@@ -12,6 +12,11 @@ module SessionsHelper
     end
   end
 
+  # Returns true if the given user is the current user.
+  def current_user?(user)
+    user == current_user
+  end
+
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
