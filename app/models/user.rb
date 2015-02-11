@@ -81,6 +81,11 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
+  # Defines a proto-feed.
+  def feed
+    Micropost.where("user_id = ?", id)
+  end
+
   private
 
     # Converts email to all lower-case
