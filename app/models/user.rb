@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:   "Relationship",
                                   foreign_key:  "follower_id",
-                                  dependent:    :destroy    
+                                  dependent:    :destroy
+  has_many :following, through: :active_relationships, source: :followed    
 
   before_create :create_activation_digest
   before_save :downcase_email
